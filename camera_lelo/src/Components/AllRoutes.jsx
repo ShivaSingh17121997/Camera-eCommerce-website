@@ -6,6 +6,8 @@ import Livechat from "../Pages/Livachat"
 import OurBlog from "../Pages/OurBlog"
 import Printique from "../Pages/Printique"
 import Home from "../Pages/Home.jsx"
+import Login from "../Pages/Login.jsx"
+import Cart from "../Pages/AddtoCart.jsx"
 
 function AllRoutes() {
     return (
@@ -18,6 +20,8 @@ function AllRoutes() {
                 <Route path="/livechat" element={<Livechat />} />
                 <Route path="/ourblog" element={<OurBlog />} />
                 <Route path="/printique" element={<Printique />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/cart" element={<Cart />} />
             </Routes>
         </div>
     )
