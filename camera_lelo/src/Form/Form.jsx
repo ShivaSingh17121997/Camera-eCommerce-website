@@ -9,49 +9,66 @@ import axios from 'axios'
 import { useState } from 'react';
 
 export default function Form() {
-  const [formData, setformData] = useState({
-    title: "",
-    price: "",
-    image: "",
-    description: "",
-    title: "",
-  });
+    const [formData, setformData] = useState({
+        title: "",
+        price: "",
+        image: "",
+        description: "",
+        title: "",
+    });
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    axios
-      .post(`https://proud-wig-ray.cyclic.app/Camera`, {
-        ...formData,
-      })
-      .then((res) => {
-        console.log(res);
-        setformData({
-          name: "",
-          cost: "",
-          likes: "",
-          description: "",
-          breed: "",
-          image: "",
-        });
-      })
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        axios
+            .post(`https://proud-wig-ray.cyclic.app/Camera`, {
+                ...formData,
+            })
+            .then((res) => {
+                console.log(res);
+                setformData({
+                    title: "",
+                    price: "",
+                    desc: "",
+                    ordering: "",
+                    image: "",
+                });
+            })
 
-  }
+    }
 
-  return (
-    <div className="addCatContainer">
-      <form onSubmit={handleSubmit} className="form">
-        <FormControl>
-          <Input onChange={(e) => setformData({ ...formData, name: e.target.value })} value={formData.name} className="name" placeholder="Name" />
-          <Input onChange={(e) => setformData({ ...formData, cost: e.target.value })} value={formData.cost} className="cost" placeholder="Cost" type="number" />
+    return (
+        <div className="addCatContainer">
+            <form onSubmit={handleSubmit} className="form" style={{ width: "35%", marginLeft: "600px" }} >
+                <FormControl>
+                    <br />
+                    <br />
+                    <Input onChange={(e) => setformData({ ...formData, title: e.target.value })} value={formData.title} className="name" placeholder="title" />
+                    <br />
+                    <br />
+                    <Input onChange={(e) => setformData({ ...formData, price: e.target.value })} value={formData.price} className="price" placeholder="price" type="number" />
+                    <br />
+                    <br />
 
-          <Input onChange={(e) => setformData({ ...formData, likes: e.target.value })} value={formData.likes} className="likes" placeholder="Likes" type="number" />
-          <Input onChange={(e) => setformData({ ...formData, description: e.target.value })} value={formData.description} className="description" placeholder="Description" />
-          <Input onChange={(e) => setformData({ ...formData, breed: e.target.value })} value={formData.breed} className="breed" placeholder="Breed" />
-          <Button onClick={handleSubmit} colorScheme={"green"} className="submitBtn">
-            Submit
-          </Button>
-        </FormControl>
-      </form>
-    </div>
-  );
+                    <Input onChange={(e) => setformData({ ...formData, description: e.target.value })} value={formData.desc} className="desc" placeholder="desc" />
+                    <br />
+                    <br />
+                    <Input onChange={(e) => setformData({ ...formData, ordering: e.target.value })} value={formData.ordering} className="breed" placeholder="ordering" />
+                    <br />
+                    <br />
+                    <Input onChange={(e) => setformData({ ...formData, img: e.target.value })} value={formData.img} className="img" placeholder="image" />
+                    <br />
+                    <br />
+                    <Button onClick={handleSubmit} colorScheme={"green"} className="submitBtn">
+                        Submit
+                    </Button>
+                </FormControl>
+                <br />
+                <br />
+                <br />
+                <br /> <br />
+                <br /> <br />
+                <br />
+            </form>
+        </div>
+    );
 }

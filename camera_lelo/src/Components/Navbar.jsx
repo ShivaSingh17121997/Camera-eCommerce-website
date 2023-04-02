@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import AllRoutes from "./AllRoutes";
 import { Stack, Input } from "@chakra-ui/react";
 import { PhoneIcon, AddIcon, WarningIcon } from '@chakra-ui/icons'
-import { Menu, MenuButton, MenuList, MenuItem, MenuItemOption, MenuGroup, MenuOptionGroup, MenuDivider, ChevronDownIcon,Button} from '@chakra-ui/react'
+import { Menu, MenuButton, MenuList, MenuItem, MenuItemOption, MenuGroup, MenuOptionGroup, MenuDivider, ChevronDownIcon, Button } from '@chakra-ui/react'
 
 
 function Navbar() {
@@ -41,20 +41,16 @@ function Navbar() {
 
         <div style={{ display: "flex", justifyContent: "space-between", backgroundColor: "rgb(0,65,132", color: "white" }}>
             <div style={{ wordSpacing: "normal", display: "flex", justifyContent: "space-between ", width: "60%", padding: "8px" }} >
-                <Link to="/Business" >Business,EDU&GOV</Link>
-                <Link to="/adorama" >Adorama</Link>
-                <Link to="/printique" >Printique</Link>
-                <Link to="/ourblog" >OurBlog</Link>
+                <Link to="/Business" ></Link>PRODUCTS
+                <Link to="/adorama" >BRANDS</Link>
+                <Link to="/printique" >USED</Link>
+                <Link to="/ourblog" >DEALS</Link>
             </div>
             <div style={{ width: "25%", display: "flex", justifyContent: "space-around", padding: "8px" }} >
-                <Link to="/livecha" >Livechat</Link>
-                <Link to="/help" >Help</Link>
+                <Link to="/livecha" >dEAL OF THE DAY</Link>
+                <Link to="/help" >CARLELO CREDIT CARD</Link>
             </div>
         </div>
-        <div>
-        
-        </div>
-
 
 
     </div >
