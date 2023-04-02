@@ -1,53 +1,52 @@
 
-
-
-// function Login() {
-//     return (
-//         <div>
-//             <h1>Login page</h1>
-//         </div>
-//     )
-// }
-
-// export default Login;
-
-import {
-    Button,
-    Checkbox,
-    Flex,
-    FormControl,
-    FormLabel,
-    Heading,
-    Input,
-    Link,
-    Stack,
-    Image,
-    ColorMode, backgroundColor
-} from '@chakra-ui/react';
+import { AuthContext } from '../Context/AuthContext';
+import { Button, Checkbox, Flex, FormControl, FormLabel, Heading, Input, Stack, } from '@chakra-ui/react';
 import { useContext, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+
+
 
 export default function Login() {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
-   // const [authState, loginUser] = useContext(AuthContext);
+    const { authState, loginUser } = useContext(AuthContext);
     const navigate = useNavigate();
 
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            let res = await fetch("https://reqres.in/api/login",
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        email, password
+                    }),
+                });
+            res = await res.json()
+            console.log(res)
+            loginUser(res.token)
+        } catch (err) {
+            console.log(`Error found:`, err)
+        }
+    };
+
+    if (authState.isAuth) {
+        return <Navigate to="/" />
+    }
+
+
     return (
-        <Stack minH={'100vh'} direction={{ base: 'column', md: 'row', }}>
+
+        //<Stack minH={'100vh'} direction={{ base: 'column', md: 'row', }}>
+
+        <form onSubmit={handleSubmit} >
 
 
-            <Flex flex={1} >
-                <Image
-                    alt={'Login Image'}
-                    objectFit={'cover'}
-                    src={
-                        'https://img.freepik.com/free-photo/dark-blue-textile-texture_23-2147729354.jpg?w=900&t=st=1680234097~exp=1680234697~hmac=b5d7d5803f1a141fd4ae35532a18803f484922af46ae44aa00a087b6048e5024'
-                    }
-                />
 
-
-            </Flex>
             <Flex p={8} flex={1} align={'center'} justify={'center'}>
 
                 <Stack spacing={4} w={'full'} maxW={'md'}  >
@@ -56,13 +55,13 @@ export default function Login() {
 
                     <FormControl id="email">
                         <FormLabel>Email address</FormLabel>
-                        <Input type="email" />
+                        <Input value={email} onChange={(e) => setEmail(e.target.value)} type="email" />
                     </FormControl>
 
 
                     <FormControl id="password">
                         <FormLabel>Password</FormLabel>
-                        <Input type="password" />
+                        <Input value={password} onChange={(e) => setPassword(e.target.value)} type="password" />
                     </FormControl>
 
 
@@ -74,7 +73,7 @@ export default function Login() {
                             <Checkbox>Remember me</Checkbox>
                             <Link color={'blue.500'}>Forgot password?</Link>
                         </Stack>
-                        <Button colorScheme={'blue'} variant={'solid'}>
+                        <Button onClick={handleSubmit} colorScheme={'orange'} variant={'solid'}>
                             Sign in
                         </Button>
                     </Stack>
@@ -82,9 +81,12 @@ export default function Login() {
 
                 </Stack>
             </Flex>
+            <div>
+                <Link to="/"> Go Back </Link>
+            </div>
+        </form>
 
 
-        </Stack>
     );
 }
 

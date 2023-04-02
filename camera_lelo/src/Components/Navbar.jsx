@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import AllRoutes from "./AllRoutes";
 import { Stack, Input } from "@chakra-ui/react";
 import { PhoneIcon, AddIcon, WarningIcon } from '@chakra-ui/icons'
-
+import { Menu, MenuButton, MenuList, MenuItem, MenuItemOption, MenuGroup, MenuOptionGroup, MenuDivider, ChevronDownIcon,Button} from '@chakra-ui/react'
 
 
 function Navbar() {
@@ -16,8 +16,9 @@ function Navbar() {
                 <Link to="/ourblog" >OurBlog</Link>
             </div>
             <div style={{ width: "25%", display: "flex", justifyContent: "space-around", padding: "8px" }} >
-                <Link to="/livecha" >Livechat</Link>
+                <Link to="/livechat" >Livechat</Link>
                 <Link to="/help" >Help</Link>
+                <Link to="/form" >Admin</Link>
             </div>
         </div>
 
@@ -33,7 +34,7 @@ function Navbar() {
                 </Stack>
                 <Link to="/login" >Sign in / My account</Link>
                 <Link to="/cart" >Add to cart</Link>
-               
+
 
             </div>
         </div>
@@ -49,6 +50,9 @@ function Navbar() {
                 <Link to="/livecha" >Livechat</Link>
                 <Link to="/help" >Help</Link>
             </div>
+        </div>
+        <div>
+        
         </div>
 
 
