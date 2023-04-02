@@ -8,12 +8,13 @@ import Printique from "../Pages/Printique"
 import Home from "../Pages/Home.jsx"
 import Login from "../Pages/Login.jsx"
 import Cart from "../Pages/AddtoCart.jsx"
+import Form from "../Form/Form.jsx"
 
 function AllRoutes() {
     return (
         <div>
             <Routes>
-                <Route path="/home" element={<Home />} />
+                <Route path="/" element={<Home />} />
                 <Route path="/adorama" element={<Adorama />} />
                 <Route path="/business" element={<Business />} />
                 <Route path="/help" element={<Help />} />
@@ -22,6 +23,7 @@ function AllRoutes() {
                 <Route path="/printique" element={<Printique />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/cart" element={<Cart />} />
+                <Route path="/form" element={<Form />} />
             </Routes>
         </div>
     )
